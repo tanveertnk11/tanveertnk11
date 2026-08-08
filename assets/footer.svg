@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 175" width="1000" height="175" role="img" aria-label="Looking for a Senior DevOps, SRE or Platform Engineering role. Remote, any time zone, available now. Contact tanysingh09 at gmail dot com or linkedin.com/in/tany09">
+  <defs>
+    <linearGradient id="fbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1222"/>
+      <stop offset="55%" stop-color="#111C33"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <radialGradient id="fglow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ftop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22C55E" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#22C55E" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#22C55E" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="fgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0 L0 0 0 40" fill="none" stroke="#1E293B" stroke-width="1" stroke-opacity="0.45"/>
+    </pattern>
+  </defs>
+
+  <rect width="1000" height="175" rx="14" fill="url(#fbg)"/>
+  <rect width="1000" height="175" rx="14" fill="url(#fgrid)"/>
+  <ellipse cx="500" cy="185" rx="440" ry="150" fill="url(#fglow)"/>
+  <rect x="250" y="0" width="500" height="3" fill="url(#ftop)"/>
+
+  <text x="500" y="42" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="10.5" font-weight="600" letter-spacing="2.6" fill="#64748B">GET IN TOUCH</text>
+
+  <text x="500" y="80" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="21" font-weight="600" fill="#F8FAFC">Looking for a Senior DevOps / SRE / Platform Engineering role</text>
+
+  <text x="500" y="106" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#94A3B8">Remote, any time zone  ·  Available now  ·  Vientiane, Laos</text>
+
+  <rect x="400" y="120" width="200" height="1" fill="#334155"/>
+
+  <text x="500" y="146" text-anchor="middle" font-family="Inter, 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="13" font-weight="500" fill="#4ADE80">tanysingh09@gmail.com   ·   linkedin.com/in/tany09</text>
+
+  <rect x="0.5" y="0.5" width="999" height="174" rx="14" fill="none" stroke="#334155"/>
+</svg>
