@@ -1,0 +1,64 @@
+name: Generate GitHub stats images
+
+# Regenerates the stats SVGs inside this repository and commits them.
+# The README points at the committed files, so nothing is fetched from a
+# third-party server when someone views the profile.
+
+on:
+  schedule:
+    # 00:20 UTC daily
+    - cron: "20 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: github-stats
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download github-stats binary
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            --output /tmp/github-stats \
+            'https://github.com/jstrieb/github-stats/releases/latest/download/github-stats_x86_64-linux'
+          chmod +x /tmp/github-stats
+          /tmp/github-stats --version
+
+      - name: Generate images
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          # Private repositories are counted. This is the whole point of running
+          # the generator here instead of using a hosted card service.
+          EXCLUDE_PRIVATE: "false"
+          # Optional secrets. Comma separated, globs allowed, e.g. "someorg/*".
+          EXCLUDE_REPOS: ${{ secrets.EXCLUDE_REPOS }}
+          EXCLUDE_LANGS: ${{ secrets.EXCLUDE_LANGS }}
+          OVERVIEW_OUTPUT_FILE: assets/generated/overview.svg
+          LANGUAGES_OUTPUT_FILE: assets/generated/languages.svg
+          SILENT: "true"
+          MAX_RETRIES: "5"
+        run: |
+          set -euo pipefail
+          mkdir -p assets/generated
+          /tmp/github-stats
+
+      - name: Commit if changed
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/generated
+          if git diff --staged --quiet; then
+            echo "Stats unchanged, nothing to commit."
+          else
+            git commit -m "chore: refresh GitHub stats images"
+            git push
+          fi
